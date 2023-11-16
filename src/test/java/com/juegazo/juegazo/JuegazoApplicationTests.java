@@ -1,9 +1,10 @@
 package com.juegazo.juegazo;
 
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
 
-@SpringBootTest
+/** 
+ * JuegazoApplicationTest is a set of test which validate 
+ */
 class JuegazoApplicationTests {
 
 	@Test
