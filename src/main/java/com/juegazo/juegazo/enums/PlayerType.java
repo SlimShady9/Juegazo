@@ -1,6 +1,6 @@
 package com.juegazo.juegazo.enums;
 
-public enum TypePlayer {
+public enum PlayerType {
     
     TANK,
     WARRIOR,

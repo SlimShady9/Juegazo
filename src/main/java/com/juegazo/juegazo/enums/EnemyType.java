@@ -1,6 +1,6 @@
 package com.juegazo.juegazo.enums;
 
-public enum TypeEnemy {
+public enum EnemyType {
 
     GOBLIN,
     BOSS,

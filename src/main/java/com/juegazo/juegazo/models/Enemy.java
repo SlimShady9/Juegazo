@@ -1,6 +1,6 @@
 package com.juegazo.juegazo.models;
 
-import com.juegazo.juegazo.enums.TypeEnemy;
+import com.juegazo.juegazo.enums.EnemyType;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -11,7 +11,7 @@ public class Enemy {
     private Long idEnemy;
     private Integer heath;
     private Integer damage;
-    private TypeEnemy enemyType;
+    private EnemyType enemyType;
     private Integer level;
 
 

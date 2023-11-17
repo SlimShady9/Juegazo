@@ -1,6 +1,6 @@
 package com.juegazo.juegazo.models;
 
-import com.juegazo.juegazo.enums.TypePlayer;
+import com.juegazo.juegazo.enums.PlayerType;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -10,7 +10,7 @@ public class Player {
 
 
     private Long idPlayer;
-    private TypePlayer type;
+    private PlayerType type;
     private Integer experience;
     
     
