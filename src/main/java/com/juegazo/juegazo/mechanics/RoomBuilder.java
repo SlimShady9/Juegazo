@@ -5,7 +5,7 @@ import com.juegazo.juegazo.models.Room;
 
 public interface RoomBuilder {
 
-    Room buildRoom(User user);
+    Room buildRoom(User user, String roomName);
     Room joinRoom(Room room, User user);
     Room leaveRoom(Room room, User user);
     Room updateRoom(Room room);

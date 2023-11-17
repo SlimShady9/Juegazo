@@ -17,6 +17,6 @@ public class PlayerInfo {
     private PlayerState playerState;
     private Integer xPosition;
     private Integer yPosition;
-    private User user;
+    private Room room;
     
 }

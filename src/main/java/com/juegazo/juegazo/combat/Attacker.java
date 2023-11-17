@@ -1,6 +1,5 @@
 package com.juegazo.juegazo.combat;
 
-import java.util.List;
 
 import com.juegazo.juegazo.enums.AttackType;
 import com.juegazo.juegazo.enums.PlayerType;
