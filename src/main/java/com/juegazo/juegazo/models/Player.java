@@ -3,11 +3,13 @@ package com.juegazo.juegazo.models;
 import com.juegazo.juegazo.authentication.User;
 import com.juegazo.juegazo.enums.PlayerType;
 
+import jakarta.persistence.Entity;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter @Setter @Builder
+@Entity
 public class Player {
 
 
