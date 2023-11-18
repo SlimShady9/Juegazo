@@ -2,7 +2,7 @@ package com.juegazo.juegazo.services;
 
 import java.util.Optional;
 import org.springframework.stereotype.Service;
-import com.juegazo.juegazo.authentication.User;
+import com.juegazo.juegazo.authentication.RegisteredUser;
 import com.juegazo.juegazo.enums.PlayerType;
 import com.juegazo.juegazo.enums.RoomState;
 import com.juegazo.juegazo.mechanics.RoomService;
@@ -33,7 +33,7 @@ public class RoomServiceImpl implements RoomService{
     }
 
     @Override
-    public Room buildRoom(User user, String roomName) {
+    public Room buildRoom(RegisteredUser user, String roomName) {
 
         Player newPlayer = findOrMakePlayer(user);
         
@@ -55,7 +55,7 @@ public class RoomServiceImpl implements RoomService{
     
 
     @Override
-    public Room joinRoom(Room room, User user) {
+    public Room joinRoom(Room room, RegisteredUser user) {
         Player player = findOrMakePlayer(user);
 
         playerRepository.savePlayerInfo(room.getIdRoom(), player);
@@ -69,7 +69,7 @@ public class RoomServiceImpl implements RoomService{
     }
 
     @Override
-    public Room leaveRoom(Room room, User user) {
+    public Room leaveRoom(Room room, RegisteredUser user) {
 
         Player player = findOrMakePlayer(user);
         PlayerInfo playerInfo = playerRepository.findPlayerInfoInRoom(room.getIdRoom(), player.getIdPlayer());
@@ -91,7 +91,7 @@ public class RoomServiceImpl implements RoomService{
         return roomRepository.findById(roomId);
     }
 
-    private Player findOrMakePlayer(User user) {
+    private Player findOrMakePlayer(RegisteredUser user) {
         /**
          * Check if user already has a player associated
          */

@@ -1,0 +1,1 @@
+insert into RegisteredUser(idRegisteredUser, nameUser) values (1, 'Juan');

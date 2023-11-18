@@ -33,14 +33,12 @@ public class Room {
 
     @OneToMany(
         cascade = 
-            {CascadeType.REMOVE, CascadeType.MERGE},
-        mappedBy = "Room")
+            {CascadeType.REMOVE, CascadeType.MERGE})
     private List<PlayerInfo> players;
 
     @OneToMany(
         cascade = 
-            {CascadeType.REMOVE, CascadeType.MERGE},
-        mappedBy = "Room")
+            {CascadeType.REMOVE, CascadeType.MERGE})
     private List<Enemy> enemies;
 
     @Enumerated(EnumType.STRING)

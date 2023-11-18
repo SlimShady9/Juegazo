@@ -2,13 +2,13 @@ package com.juegazo.juegazo.repositories;
 
 import org.springframework.data.repository.CrudRepository;
 
-import com.juegazo.juegazo.authentication.User;
+import com.juegazo.juegazo.authentication.RegisteredUser;
 import com.juegazo.juegazo.models.Player;
 import com.juegazo.juegazo.models.PlayerInfo;
 
 public interface PlayerRepository extends CrudRepository<Player, Long> {
     
-    Player findByUser(User user);
+    Player findByUser(RegisteredUser user);
 
     PlayerInfo findPlayerInfoInRoom(Long idRoom, Long idPlayer);
 
