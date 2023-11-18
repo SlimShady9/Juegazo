@@ -2,15 +2,7 @@ package com.juegazo.juegazo.models;
 
 import com.juegazo.juegazo.enums.PlayerState;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -19,28 +11,28 @@ import lombok.Setter;
  * inside a room
  */
 @Getter @Setter
-@Entity
-@Table(name = "PlayerInfo")
+@Builder
 public class PlayerInfo {
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "player")
-    @Id
     private Player player;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "room")
-    @Id
-    private Room room;
-
-    @Enumerated(EnumType.STRING)
-    @Column(name = "playerState")
     private PlayerState playerState;
 
-    @Column(name = "xPosition")
     private Integer xPosition;
 
-    @Column(name = "yPosition")
     private Integer yPosition;
+
+    private Integer level;
+
+    public static PlayerInfo build(Player player) {
+        return PlayerInfo.builder()
+            .playerState(PlayerState.FREE)
+            .xPosition(0)
+            .yPosition(0)
+            .player(player)
+            .level(player.calculateLevel())
+            .build();
+            
+    }
     
 }

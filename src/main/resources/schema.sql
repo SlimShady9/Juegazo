@@ -1,4 +1,3 @@
-DROP TABLE PlayerInfo IF EXISTS;
 DROP TABLE Player IF EXISTS;
 DROP TABLE Enemy IF EXISTS;
 DROP TABLE Room IF EXISTS;
@@ -26,30 +25,18 @@ CREATE TABLE Player (
     playerType varchar(32),
     experience bigint,
     registeredUser bigint,
+    room bigint not null,
 
     constraint chk_playerType check (playerType in (
         'TANK', 'WARRIOR', 'MAGE'
     )),
 
+    constraint fk_room_player foreign key (room) references Room(idRoom),
+
     constraint fk_registeredUser_player foreign key (registeredUser) references RegisteredUser(idRegisteredUser)
     
 );
 
-CREATE TABLE PlayerInfo(
-    player bigint,
-    room bigint,
-    playerState varchar(32),
-    xPosition int,
-    yPosition int,
-    CONSTRAINT chk_playerState check (playerState in (
-        'COMBAT', 'FREE', 'DISCONNECTED', 'DEATH'
-    )),
-
-    CONSTRAINT fk_player_playerInfo foreign key (player) references Player(idPlayer),
-    CONSTRAINT fk_room_playerInfo foreign key (room) references Room(idRoom),
-    PRIMARY KEY (player, room)
-
-);
 
 
 CREATE TABLE Enemy (
