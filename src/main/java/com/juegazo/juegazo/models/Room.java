@@ -20,8 +20,9 @@ import jakarta.persistence.Transient;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
-@Builder @Getter @Setter
+@Builder @Getter @Setter @ToString
 @Entity
 @Table(name = "Room")
 public class Room {

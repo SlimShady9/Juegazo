@@ -1,8 +1,8 @@
 package com.juegazo.juegazo.services;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
@@ -47,13 +47,14 @@ public class RoomServiceImpl implements RoomService{
         
         room = roomRepository.save(room);
 
-        Player player = findOrMakePlayer(user);
-
+        Player player = findOrMakePlayer(user, room);
 
         playerRepository.save(player);
         
         room.setEnemies(Enemy.buildRandomEnemies());
         room.setPlayers(Arrays.asList(PlayerInfo.build(player)));
+        room.setRegisteredPlayers(Arrays.asList(player));
+
         return roomRepository.save(room);
     }
 
@@ -61,28 +62,30 @@ public class RoomServiceImpl implements RoomService{
 
     @Override
     public Room joinRoom(Room room, RegisteredUser user) {
-        Player player = findOrMakePlayer(user);
+        Player player = findOrMakePlayer(user, room);
         player.setRoom(room);
 
         player = playerRepository.save(player);
 
 
         room.getPlayers().add(PlayerInfo.build(player));
-
+        room.getRegisteredPlayers().add(player);
         
-        return updateRoom(room);
+        return room;
     }
 
     @Override
-    public Room leaveRoom(Room room, RegisteredUser user) {
+    public Room leaveRoom(Room room, Player player) {
 
-        Player player = findOrMakePlayer(user);
+    
         playerRepository.delete(player);
         
-
-        room.getPlayers().stream().filter(p -> p.getPlayer().getIdPlayer() == player.getIdPlayer()).collect(Collectors.toList());
-
-        return updateRoom(room);
+        List<Player> registeredPlayers = room.getRegisteredPlayers().stream().filter(p -> p.getIdPlayer().equals(player.getIdPlayer())).collect(Collectors.toList());
+        List<PlayerInfo> players = room.getPlayers().stream().filter(p -> p.getPlayer().getIdPlayer().equals(player.getIdPlayer())).collect(Collectors.toList());
+        room.setRegisteredPlayers(registeredPlayers);
+        room.setPlayers(players);
+        
+        return room;
     }
 
     @Override
@@ -95,17 +98,18 @@ public class RoomServiceImpl implements RoomService{
         return roomRepository.findById(roomId);
     }
 
-    private Player findOrMakePlayer(RegisteredUser user) {
+    private Player findOrMakePlayer(RegisteredUser user, Room room) {
         /**
          * Check if user already has a player associated
          */
-        Player player = playerRepository.findByUser(user);
+        Player player = playerRepository.findByUserAndRoom(user, room);
 
         if (player == null) {
             player = Player.builder()
                 .experience(0)
                 .type(PlayerType.WARRIOR)
                 .user(user)
+                .room(room)
                 .build();
         }
 

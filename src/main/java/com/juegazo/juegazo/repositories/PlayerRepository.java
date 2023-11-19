@@ -8,7 +8,7 @@ import com.juegazo.juegazo.models.Room;
 
 public interface PlayerRepository extends CrudRepository<Player, Long> {
     
-    Player findByUser(RegisteredUser user);
+    Player findByUserAndRoom(RegisteredUser user, Room room);
 
     Player findByIdPlayerAndRoom(Long idPlayer, Room room);
 
