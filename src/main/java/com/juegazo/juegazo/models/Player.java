@@ -4,6 +4,7 @@ import com.juegazo.juegazo.authentication.RegisteredUser;
 import com.juegazo.juegazo.enums.PlayerType;
 
 import jakarta.annotation.Nonnull;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -17,8 +18,9 @@ import jakarta.persistence.ManyToOne;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
-@Getter @Setter @Builder
+@Getter @Setter @Builder @ToString(exclude = {"room"})
 @Entity
 public class Player {
 
@@ -35,7 +37,7 @@ public class Player {
     @Column(name = "experience")
     private Integer experience;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "registeredUser")
     private RegisteredUser user;
 
@@ -47,7 +49,7 @@ public class Player {
     
 
     public Integer calculateLevel() {
-        return 1;
+        return experience / 100;
     }
 
     

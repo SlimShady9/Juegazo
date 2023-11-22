@@ -9,8 +9,9 @@ import jakarta.persistence.Table;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
-@Getter @Setter @Builder
+@Getter @Setter @Builder @ToString
 @Entity
 @Table(name = "RegisteredUser")
 public class RegisteredUser {

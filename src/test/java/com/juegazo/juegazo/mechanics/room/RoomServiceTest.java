@@ -1,17 +1,12 @@
 package com.juegazo.juegazo.mechanics.room;
 
-import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.anyList;
-import static org.mockito.ArgumentMatchers.anyLong;
-import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.when;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -22,7 +17,6 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import com.juegazo.juegazo.authentication.RegisteredUser;
-import com.juegazo.juegazo.enums.PlayerType;
 import com.juegazo.juegazo.enums.RoomState;
 import com.juegazo.juegazo.models.Enemy;
 import com.juegazo.juegazo.models.Player;
@@ -33,7 +27,6 @@ import com.juegazo.juegazo.repositories.PlayerRepository;
 import com.juegazo.juegazo.repositories.RoomRepository;
 import com.juegazo.juegazo.services.RoomServiceImpl;
 
-import lombok.extern.slf4j.Slf4j;
 
 /**
  * Unit testing for roomService
@@ -134,6 +127,7 @@ public class RoomServiceTest {
 
         assertEquals(createdRoom.getPlayers().size(), 2);
         assertEquals(createdRoom.getRegisteredPlayers().size(), 2);
+        assertEquals(createdRoom.getRoomState(), RoomState.ACTIVE);
         
     }
     

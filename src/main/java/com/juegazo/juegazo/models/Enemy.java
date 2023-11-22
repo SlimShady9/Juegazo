@@ -1,6 +1,6 @@
 package com.juegazo.juegazo.models;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.juegazo.juegazo.enums.EnemyState;
@@ -19,8 +19,9 @@ import jakarta.persistence.ManyToOne;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
-@Getter @Setter @Builder
+@Getter @Setter @Builder @ToString
 @Entity
 public class Enemy {
     
@@ -52,18 +53,41 @@ public class Enemy {
 
 
     public static List<Enemy> buildRandomEnemies() {
-        Enemy e = Enemy.builder()
-            .level(1)
-            .enemyType(EnemyType.BOSS)
-            .enemyState(EnemyState.ALIVE)
-            .xPosition(0)
-            .yPosition(0)
-            .build();
-        return Arrays.asList(e);
+
+        List<Enemy> enemies = new ArrayList<>();
+        Long nRandomBosses = Math.round(Math.random() * (3 - 1)) + 1;
+        Long nRandomEnemies = Math.round(Math.random() * (10 - 3)) + 3;
+
+        for (int i = 0; i < nRandomBosses; i++) {
+            Integer ath = (int) Math.round(Math.random() * (20 - 10)) + 10;
+            Enemy e = Enemy.builder()
+                .enemyState(EnemyState.ALIVE)
+                .enemyType(EnemyType.BOSS)
+                .level(ath)
+                .xPosition(0)
+                .yPosition(0)
+                .build();
+            enemies.add(e);
+        }
+
+        for (int i = 0; i < nRandomEnemies; i++) {
+            Integer ath = (int) Math.round(Math.random() * (15 - 1)) + 1;
+            Enemy e = Enemy.builder()
+                .enemyState(EnemyState.ALIVE)
+                .enemyType(EnemyType.GOBLIN)
+                .level(ath)
+                .xPosition(0)
+                .yPosition(0)
+                .build();
+            enemies.add(e);
+        }
+        return enemies;
     }
 
     public Integer getDeathExperience() {
-        return 1;
+        Integer experience = this.getLevel() * 100;
+        if (EnemyType.BOSS.equals(this.getEnemyType())) experience *= 5;
+        return experience;
     }
 
 }
