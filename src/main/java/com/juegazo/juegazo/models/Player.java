@@ -15,12 +15,15 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
 @Getter @Setter @Builder @ToString(exclude = {"room"})
+@NoArgsConstructor @AllArgsConstructor
 @Entity
 public class Player {
 
@@ -37,7 +40,7 @@ public class Player {
     @Column(name = "experience")
     private Integer experience;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
     @JoinColumn(name = "registeredUser")
     private RegisteredUser user;
 

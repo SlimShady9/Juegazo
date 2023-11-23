@@ -17,12 +17,15 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
 @Builder @Getter @Setter @ToString
+@AllArgsConstructor @NoArgsConstructor
 @Entity
 @Table(name = "Room")
 public class Room {
@@ -40,18 +43,19 @@ public class Room {
 
     @OneToMany(
         fetch = FetchType.LAZY,
-        cascade = {CascadeType.REMOVE, CascadeType.MERGE})
+        cascade = CascadeType.ALL,
+        mappedBy = "room")
     @JsonIgnore
     private List<Player> registeredPlayers;
 
     @OneToMany(
-        cascade = 
-            {CascadeType.REMOVE, CascadeType.MERGE})
+        fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Enemy> enemies;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "roomState")
     private RoomState roomState;
+
     
     
 }
