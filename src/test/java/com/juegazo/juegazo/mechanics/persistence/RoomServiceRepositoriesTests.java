@@ -7,9 +7,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
@@ -28,8 +25,6 @@ import com.juegazo.juegazo.models.Player;
 import com.juegazo.juegazo.models.Room;
 import com.juegazo.juegazo.repositories.PlayerRepository;
 import com.juegazo.juegazo.repositories.RoomRepository;
-
-import jakarta.transaction.Transactional;
 
 
 @DataJpaTest
