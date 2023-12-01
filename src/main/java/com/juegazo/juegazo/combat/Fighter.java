@@ -1,5 +1,7 @@
 package com.juegazo.juegazo.combat;
 
+import com.juegazo.juegazo.enums.AttackType;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -21,4 +23,6 @@ public abstract class Fighter {
     public Integer getDamage(Integer totalDamage) {
         return 1;
     }
+
+    abstract Integer calculateDamage(AttackType attackType);
 }

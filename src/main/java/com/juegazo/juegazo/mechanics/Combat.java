@@ -9,13 +9,12 @@ import com.juegazo.juegazo.models.Room;
 
 public interface Combat {
     
-    Arena beginCombat(Enemy enemy, Room room);
+    Arena beginCombat(Room room, Enemy enemy);
     Arena attack(Attacker attacker, AttackType attack);
     Arena guard(Attacker attacker);
     Arena defend(Attacker attacker);
     Boolean checkIfVicotry(Arena arena);
     Boolean checkIdDefeat(Arena arena);
     Integer retrieveExperience(Attacker attacker, Defender defender);
-
 
 }

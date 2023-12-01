@@ -14,7 +14,7 @@ import com.juegazo.juegazo.models.Room;
 public class CombatImpl implements Combat {
 
     @Override
-    public Arena beginCombat(Enemy enemy, Room room) {
+    public Arena beginCombat(Room room, Enemy enemy) {
         return new Arena();
     }
 
@@ -30,17 +30,17 @@ public class CombatImpl implements Combat {
 
     @Override
     public Arena defend(Attacker attacker) {
-        return new Arena();
+       return new Arena();
     }
 
     @Override
     public Boolean checkIfVicotry(Arena arena) {
-        return Boolean.FALSE;
+        return Boolean.TRUE;
     }
 
     @Override
     public Boolean checkIdDefeat(Arena arena) {
-        return Boolean.FALSE;
+        return Boolean.TRUE;
     }
 
     @Override

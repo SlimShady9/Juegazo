@@ -11,6 +11,7 @@ import lombok.Getter;
 public enum AttackType {
     
     PHISICAL(Arrays.asList("Punch", "Stab")),
+    SPECIAL(Arrays.asList("MegaPunch")),
     MAGICAL(Arrays.asList("Spell", "Curse"));
 
 
