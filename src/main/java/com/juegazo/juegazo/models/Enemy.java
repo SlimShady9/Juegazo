@@ -3,7 +3,7 @@ package com.juegazo.juegazo.models;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.juegazo.juegazo.enums.EnemyState;
+import com.juegazo.juegazo.enums.EntityState;
 import com.juegazo.juegazo.enums.EnemyType;
 
 import jakarta.persistence.Column;
@@ -39,7 +39,7 @@ public class Enemy {
 
     @Column(name = "enemyState")
     @Enumerated(EnumType.STRING)
-    private EnemyState enemyState;
+    private EntityState enemyState;
 
     @Column(name = "xPosition")
     private Integer xPosition;
@@ -61,7 +61,7 @@ public class Enemy {
         for (int i = 0; i < nRandomBosses; i++) {
             Integer ath = (int) Math.round(Math.random() * (20 - 10)) + 10;
             Enemy e = Enemy.builder()
-                .enemyState(EnemyState.ALIVE)
+                .enemyState(EntityState.ALIVE)
                 .enemyType(EnemyType.BOSS)
                 .level(ath)
                 .xPosition(0)
@@ -73,7 +73,7 @@ public class Enemy {
         for (int i = 0; i < nRandomEnemies; i++) {
             Integer ath = (int) Math.round(Math.random() * (15 - 1)) + 1;
             Enemy e = Enemy.builder()
-                .enemyState(EnemyState.ALIVE)
+                .enemyState(EntityState.ALIVE)
                 .enemyType(EnemyType.GOBLIN)
                 .level(ath)
                 .xPosition(0)

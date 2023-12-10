@@ -1,9 +1,7 @@
 package com.juegazo.juegazo.mechanics.combat;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
 
-import org.aspectj.lang.annotation.Before;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -11,7 +9,6 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import com.juegazo.juegazo.combat.Arena;
-import com.juegazo.juegazo.combat.Defender;
 import com.juegazo.juegazo.mechanics.Combat;
 import com.juegazo.juegazo.models.Enemy;
 import com.juegazo.juegazo.models.Room;

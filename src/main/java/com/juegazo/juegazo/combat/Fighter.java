@@ -1,6 +1,7 @@
 package com.juegazo.juegazo.combat;
 
 import com.juegazo.juegazo.enums.AttackType;
+import com.juegazo.juegazo.enums.EntityState;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -14,6 +15,7 @@ public abstract class Fighter {
     private Integer baseDamage;
     private Integer phisicalArmor;
     private Integer magicalArmor;
+    private EntityState state;
 
     /**
      * calculates the damage dealt base on Fighter Stadistics

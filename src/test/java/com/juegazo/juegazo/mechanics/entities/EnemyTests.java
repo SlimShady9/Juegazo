@@ -7,8 +7,8 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
-import com.juegazo.juegazo.enums.EnemyState;
 import com.juegazo.juegazo.enums.EnemyType;
+import com.juegazo.juegazo.enums.EntityState;
 import com.juegazo.juegazo.models.Enemy;
 
 
@@ -26,12 +26,12 @@ public class EnemyTests {
         for (Enemy enemy : enemies) {
             if (EnemyType.BOSS.equals(enemy.getEnemyType())
                 && (enemy.getLevel() >= 10 && enemy.getLevel() <= 20)
-                && EnemyState.ALIVE.equals(enemy.getEnemyState())) {
+                && EntityState.ALIVE.equals(enemy.getEnemyState())) {
                     hasBossBeetweenLvl10or20 = Boolean.TRUE;
                 }
             if (EnemyType.GOBLIN.equals(enemy.getEnemyType())
                 && enemy.getLevel() <= 15
-                && EnemyState.ALIVE.equals(enemy.getEnemyState())) {
+                && EntityState.ALIVE.equals(enemy.getEnemyState())) {
                 countGobling ++;
             }
         }

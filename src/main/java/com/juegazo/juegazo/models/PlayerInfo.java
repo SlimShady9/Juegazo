@@ -1,6 +1,6 @@
 package com.juegazo.juegazo.models;
 
-import com.juegazo.juegazo.enums.PlayerState;
+import com.juegazo.juegazo.enums.EntityState;
 
 import lombok.Builder;
 import lombok.Getter;
@@ -16,7 +16,7 @@ public class PlayerInfo {
 
     private Player player;
 
-    private PlayerState playerState;
+    private EntityState playerState;
 
     private Integer xPosition;
 
@@ -26,7 +26,7 @@ public class PlayerInfo {
 
     public static PlayerInfo build(Player player) {
         return PlayerInfo.builder()
-            .playerState(PlayerState.FREE)
+            .playerState(EntityState.FREE)
             .xPosition(0)
             .yPosition(0)
             .player(player)

@@ -1,9 +1,10 @@
 package com.juegazo.juegazo.enums;
 
-public enum PlayerState {
+public enum EntityState {
     
     COMBAT,
-    FREE,
+    DEATH,
+    ALIVE,
     DISCONNECTED,
-    DEATH
+    FREE
 }

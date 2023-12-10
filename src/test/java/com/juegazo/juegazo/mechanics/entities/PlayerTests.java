@@ -8,7 +8,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import com.juegazo.juegazo.enums.PlayerState;
+import com.juegazo.juegazo.enums.EntityState;
 import com.juegazo.juegazo.models.Player;
 import com.juegazo.juegazo.models.PlayerInfo;
 import com.juegazo.juegazo.models.Room;
@@ -38,7 +38,7 @@ public class PlayerTests {
     public void testPLayerInfoBuild() {
         PlayerInfo pInfo1 = PlayerInfo.build(player1);
 
-        assertEquals(PlayerState.FREE, pInfo1.getPlayerState());
+        assertEquals(EntityState.FREE, pInfo1.getPlayerState());
         assertEquals(player1, pInfo1.getPlayer());
         assertEquals(0, pInfo1.getXPosition());
         assertEquals(0, pInfo1.getYPosition());
